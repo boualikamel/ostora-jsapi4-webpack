@@ -11,6 +11,7 @@
   "author": "Bouali Kamel",
   "license": "ISC",
   "devDependencies": {
+    "@arcgis/webpack-plugin": "^4.11.0",
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "autoprefixer": "^9.6.0",
