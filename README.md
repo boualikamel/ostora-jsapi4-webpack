@@ -1,6 +1,6 @@
-# Sample app using @arcgis/webpack-plugin
+# Sample app using [`starter-webpack`](https://github.com/dvbouali/starter-webpack) @arcgis/webpack-plugin
 
-This sample application uses the [`starter-webpack`](https://github.com/dvbouali/starter-webpack)
+
 
 ## install dependencies
 ```
