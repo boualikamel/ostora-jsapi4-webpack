@@ -1,6 +1,10 @@
 @import "~arcgis-js-api/themes/light/main.css";
 $h1BGColor :gray;
 
+body{
+    height: 100vh;
+    width: 100vw;
+}
 h1{
     background-color: $h1BGColor;
     user-select: none;
@@ -9,6 +13,6 @@ h1{
 #viewDiv {
     padding: 0;
     margin: 0;
-    height: 500px;
-    width: 500px;
+    height: 100%;
+    width: 100%;
   }
