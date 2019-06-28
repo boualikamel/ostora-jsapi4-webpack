@@ -1,7 +1,3 @@
-# starter-arcgisjsapi-webpack
-integration of arcgis js api in webpack
-
-
 # Sample app using @arcgis/webpack-plugin
 
 This sample application uses the [`starter-webpack`](https://github.com/dvbouali/starter-webpack)
