@@ -2,23 +2,21 @@
 
 This Repo is a sample startup app for webpack configuration and integration of arcgis-js-api in that configuration
 
-## install dependencies
+## usage
+install dependencies
 ```
 npm install
 ```
 
-## start dev server
+start dev server
 ```
 npm start
 ```
-
-
-## generate a dev build 
+generate a dev build 
 ```
 npm run build:dev
 ```
-
-## generate a prod build 
+generate a prod build 
 ```
 npm run build:prod
 ```
