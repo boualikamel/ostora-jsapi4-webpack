@@ -1,6 +1,6 @@
-# Sample app using [`starter-webpack`](https://github.com/dvbouali/starter-webpack) @arcgis/webpack-plugin
+# Sample app using [`starter-webpack`](https://github.com/dvbouali/starter-webpack) [`@arcgis/webpack-plugin`](https://github.com/Esri/arcgis-webpack-plugin)
 
-
+This Repo is a sample startup app for webpack configuration and integration of arcgis-js-api in that configuration
 
 ## install dependencies
 ```
