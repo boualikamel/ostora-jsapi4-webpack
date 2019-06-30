@@ -4,10 +4,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ArcGISPlugin = require('@arcgis/webpack-plugin');
+var webpack = require("webpack");
 
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/js/importing.js',
     output: {
         filename: '[name].[chunkhash].js',
         path: path.resolve(__dirname, '../dist')
@@ -25,6 +26,15 @@ module.exports = {
                         ]
                     }
                 }
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: "html-loader",
+                        options: { minimize: true }
+                    }
+                ]
             },
             {
                 test: [/.css$|.scss$/],
@@ -53,35 +63,43 @@ module.exports = {
             {
                 test: /\.(wsv|ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
                 use: [
-                  {
-                    loader: "file-loader",
-                    options: {
-                      name: "build/[name].[ext]"
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "build/[name].[ext]"
+                        }
                     }
-                  }
                 ]
-              },
-        
+            },
+            {
+                test: /\.js$/,
+                loader: "dojo-webpack-loader",
+                include: path.resolve(__dirname, '../dojo/'),
+            },
+
+
         ]
     },
 
     plugins: [
         new CleanWebpackPlugin(),
         new ArcGISPlugin({
-           useDefaultAssetLoaders: false,
-        //    userDefinedExcludes: [
-        //     "arcgis-js-api/layers/BingMapsLayer",
-        //     "arcgis-js-api/layers/CSVLayer",
-        //     "arcgis-js-api/layers/GeoRSSLayer",
-        //     "arcgis-js-api/layers/ImageryLayer",
-        //     "arcgis-js-api/layers/KMLLayer",
-        //     "arcgis-js-api/layers/MapImageLayer",
-        //     "arcgis-js-api/layers/OpenStreetMapLayer",
-        //     "arcgis-js-api/layers/StreamLayer",
-        //     "arcgis-js-api/layers/WMSLayer",
-        //     "arcgis-js-api/layers/WMTSLayer",
-        //     "arcgis-js-api/layers/WebTileLayer"
-        //   ]
+            useDefaultAssetLoaders: false,
+            // exclude 3D modules from build
+            // userDefinedExcludes: [
+            //     "arcgis-js-api/layers/BingMapsLayer",
+            //     "arcgis-js-api/layers/CSVLayer",
+            //     "arcgis-js-api/layers/GeoRSSLayer",
+            //     "arcgis-js-api/layers/ImageryLayer",
+            //     "arcgis-js-api/layers/KMLLayer",
+            //     "arcgis-js-api/layers/MapImageLayer",
+            //     "arcgis-js-api/layers/OpenStreetMapLayer",
+            //     "arcgis-js-api/layers/StreamLayer",
+            //     "arcgis-js-api/layers/WMSLayer",
+            //     "arcgis-js-api/layers/WMTSLayer",
+            //     "arcgis-js-api/layers/WebTileLayer",
+            //     "arcgis-js-api/views/3d"
+            // ]
         }),
         new MiniCssExtractPlugin({
             filename: 'style.[chunkhash].css'
@@ -99,28 +117,34 @@ module.exports = {
             from: './src/assets/images',
             to: 'assets/images'
         }]),
+        new webpack.NormalModuleReplacementPlugin(/^dojo\/text!/, function(data) {
+            data.request = data.request.replace(/^dojo\/text!/, "!!raw-loader!");
+        })
+   
 
 
     ],
- 
+
     resolve: {
         modules: [path.resolve(__dirname, "/src"), "node_modules/"],
         extensions: [".js", ".scss"]
-      },
-    
-      externals: [
+        
+    },
+
+    externals: [
         (context, request, callback) => {
-          if (/pe-wasm$/.test(request)) {
-            return callback(null, "amd " + request);
-          }
-          callback();
+            if (/pe-wasm$/.test(request)) {
+                return callback(null, "amd " + request);
+            }
+            callback();
         }
-      ],
-    
-      node: {
+    ],
+
+    node: {
         process: false,
         global: false
-      }
+    },
+    
 
 
 }
