@@ -4,8 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ArcGISPlugin = require('@arcgis/webpack-plugin');
-var webpack = require("webpack");
-
+var webpack = require('webpack')
 
 module.exports = {
     entry: './src/js/importing.js',
@@ -76,6 +75,7 @@ module.exports = {
                 loader: "dojo-webpack-loader",
                 include: path.resolve(__dirname, '../dojo/'),
             },
+            
 
 
         ]
@@ -117,9 +117,14 @@ module.exports = {
             from: './src/assets/images',
             to: 'assets/images'
         }]),
-        new webpack.NormalModuleReplacementPlugin(/^dojo\/text!/, function(data) {
-            data.request = data.request.replace(/^dojo\/text!/, "!!raw-loader!");
-        })
+        // new WebpackI18nExtractorPlugin({
+        //     output: {
+        //         filename: '[parentname]_nls-[lang].js',
+        //     }
+            
+        // })
+        
+        
    
 
 

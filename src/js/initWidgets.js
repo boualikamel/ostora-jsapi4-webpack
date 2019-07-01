@@ -5,37 +5,32 @@ define([
     "../app/header/header",
     "../app/aside/aside",
     "../app/widgets/widgetContainer",
-    "dojo/text!../app/header/header.html"
 ], function (require, widgetConfig, loader, header, aside, widgetContainer,template) {
 
     return {
         startup: function (mapView) {
 
             //create an instance of header widget and add it's domNode (html code) to the documents in the #header element         
-            console.log(template.default)        
+            
             this.createHeaderWidget(mapView);
 
             //create an instance of aside widget and add it's domNode (html code) to the documents in the #main element       
-            // this.createAsideWidget(mapView);
+            this.createAsideWidget(mapView);
 
-            // widgetConfig.menus.forEach((menu) => {
-            //     if (menu.type == 'simple') {
-            //         //case of widget with a simple menu
-            //         this.simpleMenuWidget(menu, widgetContainer, mapView);
+            widgetConfig.menus.forEach((menu) => {
+                if (menu.type == 'simple') {
+                    //case of widget with a simple menu
+                    this.simpleMenuWidget(menu, widgetContainer, mapView);
 
-            //     } else if (menu.type == 'dorpdown') {
-            //         //case of widget with a dropdown menu
-            //         this.dropdownMenuWidget(menu, widgetContainer, mapView);
-            //     }
-            // });
+                } else if (menu.type == 'dorpdown') {
+                    //case of widget with a dropdown menu
+                    this.dropdownMenuWidget(menu, widgetContainer, mapView);
+                }
+            });
         },
         createHeaderWidget: function (mapView) {
            
-            console.log("before construct");
-            
             let headerWidget = new header();
-            console.log("after construct");
-
             headerWidget.mapView = mapView; //this is added so the mapView can be accessed in the widget
             $('#header').append($(headerWidget.domNode));
 
@@ -83,12 +78,15 @@ define([
 
                 }).appendTo(dropdownMenu);
 
+                
                 this.createWidget(mapView, submenu.widget, menu);
             });
 
         },
         createWidget: function (mapView, config, menu) {
 
+
+            
             require([config.path], (Widget) => {
 
                 //create an instance of widgetcontainer for each widget and append the widget in it

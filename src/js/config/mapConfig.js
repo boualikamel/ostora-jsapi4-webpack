@@ -18,7 +18,7 @@ define([
         baseLayers: [new WebTileLayer({
             urlTemplate: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{level}/{row}/{col}.png"
         })],
-        title: i18n.streets,
+        title: i18n.root.streets,
         id: "streets",
         thumbnailUrl: "https://stamen-tiles.a.ssl.fastly.net/terrain/10/177/410.png"
     });
@@ -52,7 +52,7 @@ define([
                     baseLayers: [new WebTileLayer({
                         urlTemplate: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{level}/{row}/{col}.png"
                     })],
-                    title: i18n.satellite,
+                    title: i18n.root.satellite,
                     id: "satellite",
                     thumbnailUrl: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/4/5/4"
                 }),
@@ -61,7 +61,7 @@ define([
                         urlTemplate: "https://{subDomain}.tile.openstreetmap.org/{level}/{col}/{row}.png",
                         subDomains: ["a", "b", "c"]
                     })],
-                    title: i18n.osm,
+                    title: i18n.root.osm,
                     id: "osm",
                     thumbnailUrl: "https://a.tile.openstreetmap.org/6/31/25.png"
                 })

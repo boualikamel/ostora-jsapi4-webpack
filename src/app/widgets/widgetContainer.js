@@ -2,7 +2,7 @@ define([
         "dojo/_base/declare",
         "dijit/_WidgetBase",
         "dijit/_TemplatedMixin",
-        "dojo/text!./widgetContainer.html"
+        "./widgetContainer.html"
 
     ],
     function (

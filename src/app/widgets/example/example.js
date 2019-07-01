@@ -2,8 +2,8 @@ define([
         "dojo/_base/declare",
         "dijit/_WidgetBase",
         "dijit/_TemplatedMixin",
-        "dojo/text!./example.html",
-        // "dojo/i18n!app/widgets/example/nls/local"
+        "./example.html",
+        "./nls/local"
 
     ],
     function (
@@ -11,15 +11,15 @@ define([
         _WidgetBase,
         _TemplatedMixin,
         template,
-        // i18n,
+        i18n,
 
     ) {
         return declare([_WidgetBase, _TemplatedMixin], {
             templateString: template,
-            // i18n: i18n,
+            i18n: i18n.root,
             startup() {
+                
                 this.inherited(arguments);
-
             }
 
         });

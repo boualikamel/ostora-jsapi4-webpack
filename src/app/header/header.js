@@ -2,7 +2,7 @@ define([
         "dojo/_base/declare",
         "dijit/_WidgetBase",
         "dijit/_TemplatedMixin",
-        "dojo/text!./header.html",
+        "./header.html",
         "./nls/local"
 
     ],
@@ -14,9 +14,12 @@ define([
         i18n
     ) {
         return declare([_WidgetBase, _TemplatedMixin], {
-            templateString: template.default,
-            i18n: i18n,
+            templateString: template,
+            i18n: i18n.root,
             startup: function () {
+
+              
+
 
                 var search = document.createElement("div");
                 $(this.domNode).find('.searchGeo').append(search);

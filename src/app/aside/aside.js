@@ -4,7 +4,7 @@ define([
         "dojo/_base/declare",
         "dijit/_WidgetBase",
         "dijit/_TemplatedMixin",
-        "dojo/text!./aside.html",
+        "./aside.html",
         "./nls/local",
         "../../js/config/mapConfig",
         "esri/widgets/BasemapGallery",
@@ -30,7 +30,7 @@ define([
     ) {
         return declare([_WidgetBase, _TemplatedMixin], {
             templateString: template,
-            i18n: i18n,
+            i18n: i18n.root,
             startup() {
 
                 var basemapContainer = document.createElement("div");
@@ -52,7 +52,7 @@ define([
                 $(legendContainer).addClass("legend");
                 $(this.domNode).find("#legend").append(legendContainer);
 
-                //create legend widget to dispaly symbology of layers
+                // //create legend widget to dispaly symbology of layers
                 var legend = new Legend({
                     view: this.mapView,
                     container: legendContainer
@@ -61,7 +61,7 @@ define([
                 var layers = document.createElement("div");
                 $(this.domNode).find("#layerList").append(layers);
 
-                //create layer list widget to display layers and have show/hide fonctionallity
+                // //create layer list widget to display layers and have show/hide fonctionallity
                 var layerList = new LayerList({
                     view: this.mapView,
                     container: layers,
@@ -71,10 +71,10 @@ define([
                 $(this.domNode).find("#ccWidget").append(ccWidgetContainer);
 
 
-                var ccWidget = new CoordinateConversion({
-                    view: this.mapView,
-                    container: ccWidgetContainer,
-                  });
+                // var ccWidget = new CoordinateConversion({
+                //     view: this.mapView,
+                //     container: ccWidgetContainer,
+                //   });
             
             }
         });

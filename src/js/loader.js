@@ -1,5 +1,5 @@
 define([
-    "dojo/domReady"
+    "dojo/ready"
 ], function () {
 
     return {

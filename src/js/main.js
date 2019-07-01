@@ -8,7 +8,7 @@ define([
     "esri/widgets/ScaleBar",
     "esri/widgets/Fullscreen",
     "esri/widgets/Search",
-    "dojo/domReady",
+    "dojo/ready",
 
 ], function (initWidgets, mapConfig, layerConfig, searchConfig, loader, ScaleBar, Fullscreen, Search) {
 

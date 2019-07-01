@@ -2,7 +2,7 @@ define([
         "dojo/_base/declare",
         "dijit/_WidgetBase",
         "dijit/_TemplatedMixin",
-        "dojo/text!./draw.html",
+        "./draw.html",
         "./nls/local",
         "esri/widgets/Sketch/SketchViewModel",
         "esri/layers/GraphicsLayer"
@@ -25,7 +25,7 @@ define([
 
         return declare([_WidgetBase, _TemplatedMixin], {
             templateString: template,
-            i18n: i18n,
+            i18n: i18n.root,
 
             startup() {
 
