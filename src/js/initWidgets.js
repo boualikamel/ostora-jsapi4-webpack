@@ -78,7 +78,6 @@ define([
 
                 }).appendTo(dropdownMenu);
 
-                
                 this.createWidget(mapView, submenu.widget, menu);
             });
 
@@ -86,30 +85,35 @@ define([
         createWidget: function (mapView, config, menu) {
 
 
-            
-            require([config.path], (Widget) => {
+ 
+                require([config.path], (Widget) => {
 
-                //create an instance of widgetcontainer for each widget and append the widget in it
-                let widgetContainerCons = new widgetContainer();
-                
-                $(widgetContainerCons.domNode).find('.widgetTitle .widgetIcon')[0].innerHTML = config.icon;
-                $(widgetContainerCons.domNode).find('.widgetTitle .widgetText')[0].innerHTML = config.title;
+                    //create an instance of widgetcontainer for each widget and append the widget in it
+                    let widgetContainerCons = new widgetContainer();
+                    
+                    $(widgetContainerCons.domNode).find('.widgetTitle .widgetIcon')[0].innerHTML = config.icon;
+                    $(widgetContainerCons.domNode).find('.widgetTitle .widgetText')[0].innerHTML = config.title;
+    
+                    let widgetCons = new Widget();
+                    let widgetNode = $(widgetCons.domNode);
+    
+                    $(widgetContainerCons.domNode).find('.widgetBody').append(widgetNode);
+    
+                    $('#main').append($(widgetContainerCons.domNode));
+    
+                    // attach a click event on the menu to display the widget
+                    this.setMenuClick(menu, widgetContainerCons);
+    
+                    widgetCons.mapView = mapView; //this is added so the mapView can be accessed in the widget
+                    widgetCons.startup();
+                    widgetContainerCons.startup();
+    
+                });
+        
+         
 
-                let widgetCons = new Widget();
-                let widgetNode = $(widgetCons.domNode);
-
-                $(widgetContainerCons.domNode).find('.widgetBody').append(widgetNode);
-
-                $('#main').append($(widgetContainerCons.domNode));
-
-                // attach a click event on the menu to display the widget
-                this.setMenuClick(menu, widgetContainerCons);
-
-                widgetCons.mapView = mapView; //this is added so the mapView can be accessed in the widget
-                widgetCons.startup();
-                widgetContainerCons.startup();
-
-            });
+          
+        
         },
         setMenuClick: (menu, widgetContainerCons) => {
             menu.click(function (e) {

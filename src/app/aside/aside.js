@@ -71,10 +71,10 @@ define([
                 $(this.domNode).find("#ccWidget").append(ccWidgetContainer);
 
 
-                // var ccWidget = new CoordinateConversion({
-                //     view: this.mapView,
-                //     container: ccWidgetContainer,
-                //   });
+                var ccWidget = new CoordinateConversion({
+                    view: this.mapView,
+                    container: ccWidgetContainer,
+                  });
             
             }
         });

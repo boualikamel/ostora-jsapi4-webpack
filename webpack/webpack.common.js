@@ -4,7 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ArcGISPlugin = require('@arcgis/webpack-plugin');
-var webpack = require('webpack')
+// var webpack = require('webpack');
+// const HasJsPlugin = require('webpack-hasjs-plugin')
 
 module.exports = {
     entry: './src/js/importing.js',
@@ -86,20 +87,41 @@ module.exports = {
         new ArcGISPlugin({
             useDefaultAssetLoaders: false,
             // exclude 3D modules from build
-            // userDefinedExcludes: [
-            //     "arcgis-js-api/layers/BingMapsLayer",
-            //     "arcgis-js-api/layers/CSVLayer",
-            //     "arcgis-js-api/layers/GeoRSSLayer",
-            //     "arcgis-js-api/layers/ImageryLayer",
-            //     "arcgis-js-api/layers/KMLLayer",
-            //     "arcgis-js-api/layers/MapImageLayer",
-            //     "arcgis-js-api/layers/OpenStreetMapLayer",
-            //     "arcgis-js-api/layers/StreamLayer",
-            //     "arcgis-js-api/layers/WMSLayer",
-            //     "arcgis-js-api/layers/WMTSLayer",
-            //     "arcgis-js-api/layers/WebTileLayer",
-            //     "arcgis-js-api/views/3d"
-            // ]
+            exclude3D:true,
+           /*
+            userDefinedExcludes: [
+                "arcgis-js-api/layers/BingMapsLayer",
+                "arcgis-js-api/layers/CSVLayer",
+                "arcgis-js-api/layers/GeoRSSLayer",
+                "arcgis-js-api/layers/ImageryLayer",
+                "arcgis-js-api/layers/KMLLayer",
+                "arcgis-js-api/layers/MapImageLayer",
+                "arcgis-js-api/layers/OpenStreetMapLayer",
+                "arcgis-js-api/layers/StreamLayer",
+                "arcgis-js-api/layers/WMSLayer",
+                "arcgis-js-api/layers/WMTSLayer",
+                "arcgis-js-api/layers/WebTileLayer",
+                "arcgis-js-api/views/3d"
+            ]
+           
+           locales : ['','']
+           root : '.'
+           options :{
+                async
+                loaderConfig
+                environment
+                buildEnvironment
+                globalContext
+                loader
+                locales
+                cjsRequirePatterns
+                coerceUndefinedToFalse
+                noConsole
+                runtimeFeatures
+           }
+           
+
+           */
         }),
         new MiniCssExtractPlugin({
             filename: 'style.[chunkhash].css'
@@ -117,12 +139,13 @@ module.exports = {
             from: './src/assets/images',
             to: 'assets/images'
         }]),
-        // new WebpackI18nExtractorPlugin({
-        //     output: {
-        //         filename: '[parentname]_nls-[lang].js',
+
+        // that help enable the removal of unused code.
+        // new HasJsPlugin({
+        //     features: {
+        //       "some-static-feature": false
         //     }
-            
-        // })
+        //   }),
         
         
    
@@ -136,18 +159,10 @@ module.exports = {
         
     },
 
-    externals: [
-        (context, request, callback) => {
-            if (/pe-wasm$/.test(request)) {
-                return callback(null, "amd " + request);
-            }
-            callback();
-        }
-    ],
-
     node: {
         process: false,
-        global: false
+        global: false,
+        fs: "empty"
     },
     
 
