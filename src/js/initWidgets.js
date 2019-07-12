@@ -1,11 +1,9 @@
 define([
-    "require",
     "../js/config/widgetConfig",
-    "../js/loader",
     "../app/header/header",
     "../app/aside/aside",
     "../app/widgets/widgetContainer",
-], function (require, widgetConfig, loader, header, aside, widgetContainer,template) {
+], function (widgetConfig, header, aside, widgetContainer) {
 
     return {
         startup: function (mapView) {
@@ -84,10 +82,7 @@ define([
         },
         createWidget: function (mapView, config, menu) {
 
-
- 
-                require([config.path], (Widget) => {
-
+            config.widgetLoadFn(Widget => {
                     //create an instance of widgetcontainer for each widget and append the widget in it
                     let widgetContainerCons = new widgetContainer();
                     
@@ -107,13 +102,7 @@ define([
                     widgetCons.mapView = mapView; //this is added so the mapView can be accessed in the widget
                     widgetCons.startup();
                     widgetContainerCons.startup();
-    
-                });
-        
-         
-
-          
-        
+            });
         },
         setMenuClick: (menu, widgetContainerCons) => {
             menu.click(function (e) {

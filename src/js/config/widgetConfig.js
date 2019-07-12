@@ -1,6 +1,7 @@
 define([
+	"require",
 	"./nls/local",
-], function (i18n) {
+], function (require, i18n) {
 
 	return {
 		menus: [
@@ -12,24 +13,24 @@ define([
 				widget: {
 					title: i18n.root.Example,
 					icon: '<i class="fa fa-clone"></i>',
-					path: '../app/widgets/example/example'
+					widgetLoadFn: callback => require(['../../app/widgets/example/example'], callback)
 				}
-			}
+			},
 			//dropdown menu
-			// {
-			// 	type: 'dorpdown',
-			// 	title: i18n.root.drawTitleMenu,
-			// 	icon: '',
-			// 	submenus: [{
-			// 		title: i18n.root.drawTitle,
-			// 		icon: '',
-			// 		widget: {
-			// 			title: i18n.root.drawTitle,
-			// 			icon: '<i class="fas fa-pencil-alt"></i>',
-			// 			path: '../app/widgets/draw/draw'
-			// 		}
-			// 	}]
-			// }
+			{
+				type: 'dorpdown',
+				title: i18n.root.drawTitleMenu,
+				icon: '',
+				submenus: [{
+					title: i18n.root.drawTitle,
+					icon: '',
+					widget: {
+						title: i18n.root.drawTitle,
+						icon: '<i class="fas fa-pencil-alt"></i>',
+						widgetLoadFn: callback => require(['../../app/widgets/draw/draw'], callback)
+					}
+				}]
+			}
 		]
 
 
