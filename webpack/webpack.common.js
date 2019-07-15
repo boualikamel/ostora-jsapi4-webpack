@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ArcGISPlugin = require('@arcgis/webpack-plugin');
-// var webpack = require('webpack');
+var webpack = require('webpack');
 // const HasJsPlugin = require('webpack-hasjs-plugin')
 
 module.exports = {
@@ -75,20 +75,27 @@ module.exports = {
                 test: /\.js$/,
                 loader: "dojo-webpack-loader",
                 include: path.resolve(__dirname, '../dojo/'),
-            },
+            }
+           
             
-
-
         ]
+        
+
     },
 
     plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            Popper: ['popper.js', 'default']
+          }),
         new CleanWebpackPlugin(),
         new ArcGISPlugin({
             useDefaultAssetLoaders: false,
             // exclude 3D modules from build
             exclude3D:true,
-           /*
+           
             userDefinedExcludes: [
                 "arcgis-js-api/layers/BingMapsLayer",
                 "arcgis-js-api/layers/CSVLayer",
@@ -103,7 +110,7 @@ module.exports = {
                 "arcgis-js-api/layers/WebTileLayer",
                 "arcgis-js-api/views/3d"
             ]
-           
+           /*
            locales : ['','']
            root : '.'
            options :{
@@ -127,7 +134,7 @@ module.exports = {
             filename: 'style.[chunkhash].css'
         }),
         new HtmlWebpackPlugin({
-            title: 'lifadmin',
+            title: 'ostora-jsapi4-webpack',
             template: './src/index.html',
             chunksSortMode: 'none',
             minify: {
@@ -156,7 +163,6 @@ module.exports = {
     resolve: {
         modules: [path.resolve(__dirname, "/src"), "node_modules/"],
         extensions: [".js", ".scss"]
-        
     },
 
     node: {

@@ -19,8 +19,6 @@ define([
             startup: function () {
 
               
-
-
                 var search = document.createElement("div");
                 $(this.domNode).find('.searchGeo').append(search);
 
