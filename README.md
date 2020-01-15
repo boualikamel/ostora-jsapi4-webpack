@@ -25,4 +25,8 @@ npm run build:prod
 
 ### Features 
 * Arcgis Webpack Plugin[`@arcgis/webpack-plugin`](https://github.com/Esri/arcgis-webpack-plugin)
+* Webpack
+* Bootstrap
+* Jquery
+* EcmaScript6
 
