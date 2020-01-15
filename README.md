@@ -1,10 +1,10 @@
-# [`Ostora-jsapi4`](https://github.com/azouaoui-med/ostora-jsapi4) built with [`starter-webpack`](https://github.com/dvbouali/starter-webpack) and [`@arcgis/webpack-plugin`](https://github.com/Esri/arcgis-webpack-plugin)
+# [`Ostora-jsapi4`](https://github.com/azouaoui-med/ostora-jsapi4) configured with webpack
 
 This Repo is a sample startup app for webpack configuration and integration of arcgis-js-api in that configuration
 
-## [`LIVE PREVIEW PROD DEPLOYED VERSION`](https://boualikamel.github.io/ostora-jsapi4-webpack/dist/)
+[`LIVE PREVIEW PROD DEPLOYED VERSION`](https://boualikamel.github.io/ostora-jsapi4-webpack/)
 
-## usage
+### Usage
 install dependencies
 ```
 npm install
@@ -22,3 +22,7 @@ generate a prod build
 ```
 npm run build:prod
 ```
+
+### Features 
+* Arcgis Webpack Plugin[`@arcgis/webpack-plugin`](https://github.com/Esri/arcgis-webpack-plugin)
+
