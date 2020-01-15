@@ -2,7 +2,7 @@
 
 This Repo is a sample startup app for webpack configuration and integration of arcgis-js-api in that configuration
 
-[`LIVE PREVIEW PROD DEPLOYED VERSION`](https://boualikamel.github.io/ostora-jsapi4-webpack/)
+[`LIVE PREVIEW DEPLOYED PRODUCTION VERSION`](https://boualikamel.github.io/ostora-jsapi4-webpack/)
 
 ### Usage
 install dependencies
