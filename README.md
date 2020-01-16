@@ -1,11 +1,14 @@
 # ostora-jsapi4-webpack
-## [`ostora-jsapi4`](https://github.com/azouaoui-med/ostora-jsapi4) arranged with webpack
 
-This repository is the reproduction of the application a, with webpack.
+## [`ostora-jsapi4`](https://github.com/azouaoui-med/ostora-jsapi4) arranged with webpack
+This project serves as a simple the adaptation of ostora-jsapi4 for webpack.
+
 ### Preview
 [`LIVE PREVIEW DEPLOYED PRODUCTION VERSION`](https://boualikamel.github.io/ostora-jsapi4-webpack/)
+
 ### Screenshot
 ![Capture](https://user-images.githubusercontent.com/37594056/72466904-1e5c8700-37da-11ea-9adb-631ff37a45e7.PNG)
+
 ### Usage
 install dependencies
 ```
