@@ -1,7 +1,7 @@
 # ostora-jsapi4-webpack
 
 ## [`ostora-jsapi4`](https://github.com/azouaoui-med/ostora-jsapi4) arranged with webpack
-This project serves as a simple the adaptation of ostora-jsapi4 for webpack.
+This project serves as a simple the adaptation of ostora-jsapi4 (a configurable mapwiewer) for webpack.
 
 ### Preview
 [`LIVE PREVIEW DEPLOYED PRODUCTION VERSION`](https://boualikamel.github.io/ostora-jsapi4-webpack/)
