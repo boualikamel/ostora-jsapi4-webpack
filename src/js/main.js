@@ -1,5 +1,4 @@
 define([
-
     "../js/initWidgets",
     "../js/config/mapConfig",
     "../js/config/layerConfig",
