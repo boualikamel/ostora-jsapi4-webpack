@@ -33,3 +33,4 @@ npm run build:prod
 * Jquery
 * EcmaScript6
 
+Adapted by boualikamel (Bouali Kamel)
