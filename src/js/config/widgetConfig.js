@@ -13,7 +13,7 @@ define([
 				widget: {
 					title: i18n.root.Example,
 					icon: '<i class="fa fa-clone"></i>',
-					widgetLoadFn: callback => require(['../../app/widgets/example/example'], callback)
+					widgetLoadFn: callback => require(['app/widgets/example/example'], callback)
 				}
 			},
 			//dropdown menu
@@ -27,7 +27,7 @@ define([
 					widget: {
 						title: i18n.root.drawTitle,
 						icon: '<i class="fas fa-pencil-alt"></i>',
-						widgetLoadFn: callback => require(['../../app/widgets/draw/draw'], callback)
+						widgetLoadFn: callback => require(['app/widgets/draw/draw'], callback)
 					}
 				}]
 			}

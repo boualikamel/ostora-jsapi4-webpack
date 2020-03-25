@@ -1,8 +1,8 @@
 define([
-    "../js/config/widgetConfig",
-    "../app/header/header",
-    "../app/aside/aside",
-    "../app/widgets/widgetContainer",
+    "js/config/widgetConfig",
+    "app/header/header",
+    "app/aside/aside",
+    "app/widgets/widgetContainer",
 ], function (widgetConfig, header, aside, widgetContainer) {
 
     return {

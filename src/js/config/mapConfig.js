@@ -1,4 +1,4 @@
-import "./nls/local";
+
 define([
     "./nls/local",
     "esri/Map",
